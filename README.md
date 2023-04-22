@@ -1,12 +1,10 @@
 <h2 align="center"><img src="res/README/icon128.png" height="128"><br>Wereader</h2>
 
-<p align="center"><strong>一个 Chrome / Firefox 扩展：主要用于微信读书做笔记，对常使用 Markdown 做笔记的读者比较有帮助。</strong></p>
+<p ><strong>本项目基于 https://github.com/Higurashi-kagome/wereader，增加图片导出功能。 </strong></p>
+
+![](https://camo.githubusercontent.com/de6987fb0badf6857aa100db1074534a626179378ea4b6189d4da34b7520b099/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f73616e63696a756e2f696d616765732f706963732f7172636f64655f62616e6e65722e77656270)
 
 ## 安装
-
-[![](https://img.shields.io/badge/-Chrome-brightgreen?logo=GoogleChrome)](https://chrome.google.com/webstore/detail/%E5%BE%AE%E4%BF%A1%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E5%8A%A9%E6%89%8B/cmlenojlebcodibpdhmklglnbaghpdcg?hl=zh-CN) [![](https://img.shields.io/badge/-Edge-brightgreen?logo=MicrosoftEdge)](https://microsoftedge.microsoft.com/addons/detail/%E5%BE%AE%E4%BF%A1%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E5%8A%A9%E6%89%8B/iblnlnnpkbhnempmcbioeholmemingmo) [![Mozilla add\-on: Firefox](https://img.shields.io/badge/-Firefox-brightgreen?logo=FirefoxBrowser)](https://addons.mozilla.org/zh-CN/firefox/addon/%E5%BE%AE%E4%BF%A1%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E5%8A%A9%E6%89%8B/)
-
-不能访问 Chrome 网上应用店时按如下操作在 Chrome 上手动安装（注意：手动安装的扩展不会自动更新）：
 
 1. 首先，下载 [wereader.zip](./wereader.zip)。下载好后解压到某个文件夹（比如 `wereader`）。
 
@@ -30,22 +28,13 @@
 10. 统计周、月阅读时间；
 11. 浏览公众号；
 12. 读书页图片、代码块放大。
+13. Markdown 导出图片
 
 ## 致谢
 
 | Item                                                         | Reason                                                       |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [wereader](https://github.com/arry-lee/wereader)             | 此项目为该扩展的起源，我先是在 [pythontools/wereader](https://github.com/liuhao326/pythontools/tree/master/wereader) 中完善了该项目，然后才基于 pythontools/wereader 实现了该扩展。 |
-| [examples-of-web-crawlers](https://github.com/shengqiangzhang/examples-of-web-crawlers) | 编写 pythontools/wereader 的过程中参考了该项目中的[一键导出微信读书的书籍和笔记](https://github.com/shengqiangzhang/examples-of-web-crawlers/tree/master/12.%E4%B8%80%E9%94%AE%E5%AF%BC%E5%87%BA%E5%BE%AE%E4%BF%A1%E8%AF%BB%E4%B9%A6%E7%9A%84%E4%B9%A6%E7%B1%8D%E5%92%8C%E7%AC%94%E8%AE%B0)。 |
-| [jquery/jquery: jQuery JavaScript Library](https://github.com/jquery/jquery) | 简化代码。                                                   |
-| [clipboard.js](https://github.com/zenorocha/clipboard.js)    | 实现复制文本。                                               |
-| [sweetalert2](https://github.com/sweetalert2/sweetalert2)    | 实现弹窗。                                                   |
-| [HbnLg](https://www.iconfont.cn/user/detail?spm=a313x.7781069.1998910419.dcc7d6115&userViewType=collections&uid=4451423) | 图标来源于 [iconfont](https://www.iconfont.cn/collections/index?spm=a313x.7781069.1998910419.3)，图库显示 Hbnlg 为图标作者。 |
-| [SingleFile](https://github.com/gildas-lormeau/SingleFile)   | 设置页模仿自该扩展。                                         |
-| [weread_helper_extension](https://github.com/ellipse42/weread_helper_extension) | 参考该项目中的代码实现了公众号浏览和书架管理（目前该功能已移除，建议通过手机管理书架）。 |
-| [uzairfarooq/arrive](https://github.com/uzairfarooq/arrive)  | 方便监听 DOM 变动。                                          |
-| [jquery/jquery\-mousewheel](https://github.com/jquery/jquery-mousewheel) | 方便监听滚轮事件。                                           |
-
+| [wereader](https://github.com/Higurashi-kagome/wereader)             | 本项目基于 Higurashi-kagome/wereader，增加图片导出功能。
 ## 参考
 
 | Item                                                                            | Description         |

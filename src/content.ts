@@ -18,6 +18,8 @@ import { initSelectAction } from './content/modules/content-select-action';
 import { initTheme } from './content/modules/content-theme';
 import { initThoughtEdit } from './content/modules/content-thought-edit';
 import { initFancyBox } from './content/modules/fancybox';
+import { initClickNextPageListener, 
+	initDomChangeObserver } from './content/modules/content-domObserver';
 
 initAlert();
 initDeleteMarksNotification();
@@ -33,3 +35,5 @@ initSelectAction();
 initRightClick();
 initThoughtEdit();
 initFancyBox();
+initDomChangeObserver();
+initClickNextPageListener();

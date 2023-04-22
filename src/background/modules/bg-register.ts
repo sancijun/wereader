@@ -1,4 +1,5 @@
 import {
+	copyBookMarks,
 	createMpPage,
 	deleteBookmarks,
 	getShelfData,
@@ -22,6 +23,10 @@ export function initRegister() {
 		let tabId: number | undefined;
 		if (sender && sender.tab) tabId = sender.tab.id;
 		switch(msg.type){
+			case "getAllMarks":
+				copyBookMarks(true, msg.chapterImgData)
+			case "getMarksInCurChap":
+				copyBookMarks(false, msg.chapterImgData)
 			case "getShelf":
 				getShelfData().then(data=>{
 					sendResponse({data: data});
@@ -113,7 +118,7 @@ export function initRegister() {
 		"title":"反馈",
 		"contexts":["browser_action"],
 		"onclick": ()=>{
-			chrome.tabs.create({url: "https://github.com/Higurashi-kagome/wereader/issues/new/choose"});
+			chrome.tabs.create({url: "https://github.com/sancijun/wereader/issues/new/choose"});
 		}
 	})
 
@@ -140,7 +145,7 @@ export function initRegister() {
 		const onUpdated = false;
 		const onInstall = false;
 		if(details.reason === 'install' && onInstall){
-			chrome.tabs.create({url: "https://github.com/Higurashi-kagome/wereader/issues/9"});
+			chrome.tabs.create({url: "https://github.com/sancijun/wereader/issues/1"});
 		} else if(details.reason === 'update' && onUpdated){
 			chrome.notifications.create({
 				title: '微信读书笔记助手',

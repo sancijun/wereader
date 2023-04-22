@@ -1,8 +1,8 @@
 {
 	"manifest_version": 2,
-	"name": "微信读书笔记助手",
-	"version": "0.0.0",
-	"description": "一个还不错的微信读书笔记工具，方便你导出书本标注等内容，对常使用 Markdown 做笔记的用户比较有帮助。",
+	"name": "微信读书工具箱",
+	"version": "0.0.1",
+	"description": "基于”微信读书笔记助手“，完善图片导出功能。作者：三此君（公众号/B站/抖音）",
 	"background": {
 	   "page": "bg.html",
 	   "persistent": true
@@ -19,7 +19,7 @@
 		  "32": "icons/extension-icons/icon32.png"
 	   },
 	   "default_popup": "popup.html",
-	   "default_title": "wereader"
+	   "default_title": "weread-tool"
 	},
 	"content_scripts": [
 	   {
@@ -42,12 +42,15 @@
 	   "page": "options.html",
 	   "open_in_tab": true
 	},
-	"homepage_url": "https://github.com/Higurashi-kagome/wereader",
+	"homepage_url": "https://github.com/sancijun/wereader",
 	"permissions": [
 	   "tabs",
+	   "activeTab",
 	   "cookies",
 	   "storage",
 	   "contextMenus",
+	   "http://*/*",
+	   "https://*/*",
 	   "*://weread.qq.com/*",
 	   "*://i.weread.qq.com/*",
 	   "webRequest"

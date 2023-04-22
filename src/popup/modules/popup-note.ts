@@ -36,10 +36,10 @@ async function initNoteTab(url: string) {
 				bg.copyComment(userVid, true)
 				break;
 			case "getMarksInCurChap":
-				bg.copyBookMarks(false)
+				bg.sendMessageToContentScript({message:"getMarksInCurChap"});
 				break;
-			case "getAllMarks":
-				bg.copyBookMarks(true)
+			case "getAllMarks": // 如果是导出全书标注，则发消息通知 content.js 执行clickReaderFooterButton加载全书内容
+				bg.sendMessageToContentScript({message:"clickReaderFooterButton"});
 				break;
 			case "getContents":
 				bg.copyContents()

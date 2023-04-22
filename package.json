@@ -14,15 +14,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Higurashi-kagome/wereader.git"
+    "url": "git+https://github.com/sancijun/wereader.git"
   },
   "keywords": [],
   "author": "HL",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Higurashi-kagome/wereader/issues"
+    "url": "https://github.com/sancijun/wereader/issues"
   },
-  "homepage": "https://github.com/Higurashi-kagome/wereader#readme",
+  "homepage": "https://github.com/sancijun/wereader#readme",
   "devDependencies": {
     "@babel/core": "^7.17.12",
     "@babel/preset-env": "^7.17.12",

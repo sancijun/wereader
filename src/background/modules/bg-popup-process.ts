@@ -168,8 +168,8 @@ export function addRangeIndexST(marks: any, markedDataLength: number) {
 	else return [marks, false];
 }
 
-// 处理章内标注
-export function traverseMarks(marks: (Updated | ThoughtsInAChap)[], markedData: Array<Img|Footnote|Code> = []) {
+// 处理章内标注|| 如果是图片，是哪一章的图片？
+export function traverseMarks(marks: (Updated | ThoughtsInAChap)[], chapterImgData:{}, markedData: Array<Img|Footnote|Code> = []) {
 	function isThought(mark: Updated | ThoughtsInAChap): mark is ThoughtsInAChap {
 		return ('abstract' in mark && 'content' in mark);
 	}
@@ -204,6 +204,9 @@ export function traverseMarks(marks: (Updated | ThoughtsInAChap)[], markedData: 
 			} else {
 				res += (thouAbstract + thouContent);
 			}
+		} else if(mark.markText == "[插图]"){
+			let range = mark.range.split("-")[0];
+			res += "![插图](" + chapterImgData[range] + ")\n\n"
 		} else if(isUpdated(mark)){ // 不是想法（为标注）
 			// 则进行正则匹配
 			prevMarkText = mark.markText;
@@ -267,7 +270,7 @@ export async function getChapters(){
 			}
 		}
 	}
-	// https://github.com/Higurashi-kagome/wereader/issues/76 end
+	
 	checkedChaps = chapsInServer.map((chapInServer)=>{
 		chapInServer.isCurrent = 
 			(chapInServer.title === response.currentContent

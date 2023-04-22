@@ -65,7 +65,7 @@ export async function copyContents(){
 }
 
 // 获取标注并复制标注到剪切板
-export async function copyBookMarks(isAll: boolean) {
+export async function copyBookMarks(isAll: boolean, chapterImgData:{}) {
 	// 通知生成遮盖
 	await sendMessageToContentScript({message: {isAddMask: true}});
 	// 得到 res
@@ -86,7 +86,7 @@ export async function copyBookMarks(isAll: boolean) {
 				}
 			}
 			if(!marks.length) return tempRes;
-			tempRes += traverseMarks(marks);
+			tempRes += traverseMarks(marks, chapterImgData[curChapAndMarks.title.replace(/　|\s/g, '')]);
 			return tempRes;
 		},'');
 		copy(res);
@@ -119,9 +119,8 @@ export async function copyBookMarks(isAll: boolean) {
 			console.log('标注不匹配', markedData, marks);
 			markedData = [];
 		}
-        let str = traverseMarks(marks, markedData);
-		res += str;
-		if(str) copy(res);
+		res += traverseMarks(marks, chapterImgData[targetChapAndMarks.title.replace(/　|\s/g, '')], markedData);
+		if(res) copy(res);
 		else sendAlertMsg({text: "该章节无标注",icon:'warning'});
 	}
 	// 通知移除遮盖
