@@ -1,4 +1,4 @@
-<h2 align="center"><img src="res/README/icon128.png" height="128"><br>Wereader</h2>
+<h2 align="center"><img src="res/README/icon128.png" height="128"><br></h2>
 
 <p ><strong>本项目基于 https://github.com/Higurashi-kagome/wereader，增加图片导出功能。 </strong></p>
 
