@@ -21,12 +21,9 @@ function initDomChangeObserver(){
 				  const dataWrCo = img.getAttribute('data-wr-co');
 				  const dataSrc = img.getAttribute('data-src');
 				  if (dataWrCo && dataSrc) {
-					imgData[dataWrCo] = dataSrc;
+					chapterImgData[dataWrCo] = dataSrc;
 				  }
 				});
-	  
-				// 将当前章节的图片数据添加到已存储的数据中
-				chapterImgData[chapterTitle] = imgData;
 	  
 				// 将更新后的数据存储到 localStorage 中
 				localStorage.setItem('chapterImgData', JSON.stringify(chapterImgData));
