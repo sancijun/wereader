@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 
 import { loadCSS, unloadCSS } from './content-utils';
 
-let curFlag = 0;
+let curFlag = -1;
 
 const tag = 'content-theme: '
 

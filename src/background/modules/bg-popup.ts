@@ -86,7 +86,7 @@ export async function copyBookMarks(isAll: boolean, chapterImgData:{}) {
 				}
 			}
 			if(!marks.length) return tempRes;
-			tempRes += traverseMarks(marks, chapterImgData[curChapAndMarks.title.replace(/　|\s/g, '')]);
+			tempRes += traverseMarks(marks, chapterImgData[title.replace(/　|\s/g, '')]);
 			return tempRes;
 		},'');
 		copy(res);
@@ -119,7 +119,7 @@ export async function copyBookMarks(isAll: boolean, chapterImgData:{}) {
 			console.log('标注不匹配', markedData, marks);
 			markedData = [];
 		}
-		res += traverseMarks(marks, chapterImgData[targetChapAndMarks.title.replace(/　|\s/g, '')], markedData);
+		res += traverseMarks(marks, chapterImgData[title.replace(/　|\s/g, '')], markedData);
 		if(res) copy(res);
 		else sendAlertMsg({text: "该章节无标注",icon:'warning'});
 	}

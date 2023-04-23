@@ -25,8 +25,10 @@ export function initRegister() {
 		switch(msg.type){
 			case "getAllMarks":
 				copyBookMarks(true, msg.chapterImgData)
+				break;
 			case "getMarksInCurChap":
 				copyBookMarks(false, msg.chapterImgData)
+				break;
 			case "getShelf":
 				getShelfData().then(data=>{
 					sendResponse({data: data});
