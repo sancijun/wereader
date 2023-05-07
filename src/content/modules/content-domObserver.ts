@@ -1,4 +1,10 @@
 /* 监听 DOM 变化，获取预加载的图片 */
+import $ from 'jquery';
+import 'arrive';
+import {
+    simulateClick,
+    sleep,
+} from './content-utils';
 
 
 // 监听节点变化
@@ -43,7 +49,18 @@ export { initDomChangeObserver };
 function initClickNextPageListener(){
 	chrome.runtime.onMessage.addListener((msg)=>{
 		if(msg == "clickReaderFooterButton"){
-			clickReaderFooterButton();
+			localStorage.setItem('chapterImgData', '{}')
+			// 跳转到第一章
+			simulateClick($('.readerControls_item.catalog')[0]); // 点击目录显示之后才能够正常获取 BoundingClientRect
+			const readerCatalog: HTMLElement | null = document.querySelector('.readerCatalog');
+			if (readerCatalog) {
+				readerCatalog.removeAttribute('style');
+				simulateClick($('.chapterItem_link')[0]);
+				readerCatalog.setAttribute('style', 'display: none;');
+			}
+			
+			// 点击下一章直到最后
+			setTimeout(clickReaderFooterButton, 1000);
 		}else if(msg == "getMarksInCurChap"){
 			chrome.runtime.sendMessage({type:"getMarksInCurChap", chapterImgData: JSON.parse(localStorage.getItem('chapterImgData') ?? '{}')})
 		}

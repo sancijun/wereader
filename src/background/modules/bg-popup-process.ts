@@ -208,7 +208,7 @@ export function traverseMarks(marks: (Updated | ThoughtsInAChap)[], chapterImgDa
 			let imgData = findImagesInRange(chapterImgData, mark.range)
 			let index = 0
 			res += mark.markText.replace(/\[插图\]/g, (match) => {
-				return `![插图](${imgData[index++]})` || match;});
+				return `![插图](${imgData[index++]})\n` || match;});
 		} else if(isUpdated(mark)){ // 不是想法（为标注）
 			// 则进行正则匹配
 			prevMarkText = mark.markText;
