@@ -76,12 +76,12 @@ async function getBookMarks(isAddThou?: boolean) {
 		let chapAndMarks: ChapAndMarks = chap as unknown as ChapAndMarks;
 		//取得章内标注并初始化 range
 		let marksInAChap = marks.filter((mark)=>mark.chapterUid == chapAndMarks.chapterUid);
-		marksInAChap = marksInAChap.map((curMark)=>{
-			if(curMark.range != null && typeof curMark.range.valueOf() === "string"){
-				curMark.range = curMark.range.replace(/(\d*)-\d*/, "$1");
-			}
-			return curMark;
-		});
+		// marksInAChap = marksInAChap.map((curMark)=>{
+		// 	if(curMark.range != null && typeof curMark.range.valueOf() === "string"){
+		// 		curMark.range = curMark.range.replace(/(\d*)-\d*/, "$1");
+		// 	}
+		// 	return curMark;
+		// });
 		// 排序*大多数时候数据是有序的，但存在特殊情况所以必须排序*
 		chapAndMarks.marks = sortByKey(marksInAChap, "range") as Updated[];
 		return chapAndMarks;
@@ -204,9 +204,11 @@ export function traverseMarks(marks: (Updated | ThoughtsInAChap)[], chapterImgDa
 			} else {
 				res += (thouAbstract + thouContent);
 			}
-		} else if(mark.markText == "[插图]"){
-			let range = mark.range.split("-")[0];
-			res += "![插图](" + chapterImgData[range] + ")\n\n"
+		} else if(mark.markText.includes("[插图]")){
+			let imgData = findImagesInRange(chapterImgData, mark.range)
+			let index = 0
+			res += mark.markText.replace(/\[插图\]/g, (match) => {
+				return `![插图](${imgData[index++]})` || match;});
 		} else if(isUpdated(mark)){ // 不是想法（为标注）
 			// 则进行正则匹配
 			prevMarkText = mark.markText;
@@ -220,6 +222,20 @@ export function traverseMarks(marks: (Updated | ThoughtsInAChap)[], chapterImgDa
     }
 	return res;
 }
+
+function findImagesInRange(imageDict:{[offset: string]: string}, range: string): string[] {
+	let [min, max] = range.split("-").map(Number);
+	if (max === undefined || max - min <= 1) {
+		return [imageDict[min]];
+	}
+	const result: string[] = [];
+	for (const [offset, imgUrl] of Object.entries(imageDict)) {
+		const offsetNum = Number(offset);
+		if (offsetNum >= min && offsetNum <= max) result.push(imgUrl);
+	}
+  
+	return result;
+  }
 
 export async function getChapters(){
 	const wereader = new Wereader(window.bookId);
